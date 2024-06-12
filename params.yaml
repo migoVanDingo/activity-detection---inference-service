@@ -1,0 +1,55 @@
+base:
+ duration: 3
+ overwrite: True
+ fps: 30
+ batch_size: 4
+ keyboard_detection: True
+
+directory:
+ video: /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/raw/video
+
+ keyboard_detection: /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/raw/keyboard_detection
+
+files:
+ videos:
+  - G-C1L1P-Mar02-E-Irma_q2_01-08_30fps.mp4
+  - G-C1L1P-Mar02-E-Irma_q2_02-08_30fps.mp4
+  - G-C1L1P-Mar02-E-Irma_q2_03-08_30fps.mp4
+  - G-C1L1P-Mar02-E-Irma_q2_04-08_30fps.mp4
+  - G-C1L1P-Mar02-E-Irma_q2_05-08_30fps.mp4
+  - G-C1L1P-Mar02-E-Irma_q2_06-08_30fps.mp4
+  - G-C1L1P-Mar02-E-Irma_q2_07-08_30fps.mp4
+  - G-C1L1P-Mar02-E-Irma_q2_08-08_30fps.mp4
+    
+ keyboard_detections:
+  - G-C1L1P-Mar02-E-Irma_q2_01-08_30fps_60_det_per_min.csv
+  - G-C1L1P-Mar02-E-Irma_q2_02-08_30fps_60_det_per_min.csv
+  - G-C1L1P-Mar02-E-Irma_q2_03-08_30fps_60_det_per_min.csv
+  - G-C1L1P-Mar02-E-Irma_q2_04-08_30fps_60_det_per_min.csv
+  - G-C1L1P-Mar02-E-Irma_q2_05-08_30fps_60_det_per_min.csv
+  - G-C1L1P-Mar02-E-Irma_q2_06-08_30fps_60_det_per_min.csv
+  - G-C1L1P-Mar02-E-Irma_q2_07-08_30fps_60_det_per_min.csv
+  - G-C1L1P-Mar02-E-Irma_q2_08-08_30fps_60_det_per_min.csv
+    
+ roi: /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/raw/region/video_roi.csv
+
+ session_props: /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/raw/region/properties_session.csv
+
+generate_proposal:
+ output_dir: /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/interim
+ output_file: tyrp_only_roi.csv
+ overwrite: True
+
+extract_proposal:
+ output_dir: /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/processed
+ overwrite: True
+
+neural_network:
+ input_shape: [3, 90, 224, 224]
+ checkpoint: /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/raw/region/best_epoch53.pth
+ depth: 4
+ gpu: False
+ overwrite: True
+
+
+
