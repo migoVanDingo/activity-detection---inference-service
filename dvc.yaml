@@ -1,0 +1,48 @@
+stages:
+  generate_proposals:
+    cmd: python src/stages/generate_proposals.py
+    deps:
+      - data/raw/region/properties_session.csv
+      - src/classes/generate_region_proposals.py
+    params:
+      - base
+      - generate_proposal
+      - directory
+      - files
+    outs:
+      - data/interim/tyrp_only_roi.csv
+
+  extract_proposals:
+    cmd: python src/stages/extract_proposals.py
+    deps:
+      - data/interim/tyrp_only_roi.csv
+      - data/raw/keyboard_detection
+      - data/raw/video
+      - src/classes/extract_region_proposals.py
+    params:
+      - base
+      - extract_proposal
+      - generate_proposal
+      - directory
+    outs:
+      - data/processed/proposals_kbdet
+      - data/processed/proposals_list_kbdet.txt
+
+  classify_proposals:
+    cmd: python src/stages/classify_proposals.py
+    deps:
+      - src/classes/extract_region_proposals.py
+      - data/processed/proposals_list_kbdet.txt
+      - data/raw/region/best_epoch53.pth
+      - src/classes/classify_typing_proposals.py
+      - src/classes/data_loader.py
+      - src/classes/dyadic_cnn_3d.py
+      - src/utility/memory_monitor.py
+    params:
+      - base
+      - neural_network
+      - generate_proposal
+      - extract_proposal
+    outs:
+      - data/processed/proposals_list_kbdet_classified.txt
+    

@@ -34,9 +34,9 @@ class ClassifyTypingProposalsFast:
 
             # Output excel file with predictions
             if self.config['base']['keyboard_detection']:
-                out_file = f"{self.config['generate_proposal']['output_dir']}/tynty-roi-ours-{3*self.config['base']['fps']}-kbdet.csv"
+                out_file = f"{self.config['classify_proposal']['output_dir']}/{self.config['classify_proposal']['output_file_detection']}"
             else:
-                out_file = f"{self.config['generate_proposal']['output_dir']}/tynty-roi-ours-{3*self.config['base']['fps']}.csv"
+                out_file = f"{self.config['classify_proposal']['output_dir']}/{self.config['classify_proposal']['output_file_no_detection']}"
 
             # Creating default columns for activity, class_idx and class_prob
             region_proposals = load_csv(f"{self.config['generate_proposal']['output_dir']}/{self.config['generate_proposal']['output_file']}")
@@ -152,6 +152,7 @@ class ClassifyTypingProposalsFast:
 
 
             # Saving the csv file
+            print(f"Saving {out_file}")
             tydf.to_csv(out_file, index=False) 
 
 

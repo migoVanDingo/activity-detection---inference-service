@@ -1,0 +1,112 @@
+schema: '2.0'
+stages:
+  generate_proposals:
+    cmd: python src/stages/generate_proposals.py
+    deps:
+    - path: data/raw/region/properties_session.csv
+      hash: md5
+      md5: fd6d30c465c0ae2fef4360da61a754f0
+      size: 490
+    - path: src/classes/generate_region_proposals.py
+      hash: md5
+      md5: c8e6aded4e41afd48bdaf061ea71fdee
+      size: 8655
+    params:
+      params.yaml:
+        base:
+          duration: 3
+          overwrite: true
+          fps: 30
+          batch_size: 4
+          keyboard_detection: true
+        directory:
+          video: 
+            /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/raw/video
+          keyboard_detection: 
+            /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/raw/keyboard_detection
+        files:
+          videos:
+          - G-C1L1P-Mar02-E-Irma_q2_01-08_30fps.mp4
+          - G-C1L1P-Mar02-E-Irma_q2_02-08_30fps.mp4
+          - G-C1L1P-Mar02-E-Irma_q2_03-08_30fps.mp4
+          - G-C1L1P-Mar02-E-Irma_q2_04-08_30fps.mp4
+          - G-C1L1P-Mar02-E-Irma_q2_05-08_30fps.mp4
+          - G-C1L1P-Mar02-E-Irma_q2_06-08_30fps.mp4
+          - G-C1L1P-Mar02-E-Irma_q2_07-08_30fps.mp4
+          - G-C1L1P-Mar02-E-Irma_q2_08-08_30fps.mp4
+          keyboard_detections:
+          - G-C1L1P-Mar02-E-Irma_q2_01-08_30fps_60_det_per_min.csv
+          - G-C1L1P-Mar02-E-Irma_q2_02-08_30fps_60_det_per_min.csv
+          - G-C1L1P-Mar02-E-Irma_q2_03-08_30fps_60_det_per_min.csv
+          - G-C1L1P-Mar02-E-Irma_q2_04-08_30fps_60_det_per_min.csv
+          - G-C1L1P-Mar02-E-Irma_q2_05-08_30fps_60_det_per_min.csv
+          - G-C1L1P-Mar02-E-Irma_q2_06-08_30fps_60_det_per_min.csv
+          - G-C1L1P-Mar02-E-Irma_q2_07-08_30fps_60_det_per_min.csv
+          - G-C1L1P-Mar02-E-Irma_q2_08-08_30fps_60_det_per_min.csv
+          roi: 
+            /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/raw/region/video_roi.csv
+          session_props: 
+            /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/raw/region/properties_session.csv
+        generate_proposal:
+          output_dir: 
+            /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/interim
+          output_file: tyrp_only_roi.csv
+          overwrite: true
+    outs:
+    - path: data/interim/tyrp_only_roi.csv
+      hash: md5
+      md5: 5f7ad214e7189595f685b1ba397be3d4
+      size: 731913
+  extract_proposals:
+    cmd: python src/stages/extract_proposals.py
+    deps:
+    - path: data/interim/tyrp_only_roi.csv
+      hash: md5
+      md5: 818ca0d32023939e592f7095462bea0c
+      size: 919624
+    - path: data/raw/keyboard_detection
+      hash: md5
+      md5: 3ffc6af5877b8888255ea80c8c180405.dir
+      size: 108611
+      nfiles: 8
+    - path: data/raw/video
+      hash: md5
+      md5: ef0d80d2db6325237311d03a76e634e9.dir
+      size: 1532133940
+      nfiles: 11
+    - path: src/classes/extract_region_proposals.py
+      hash: md5
+      md5: 2742294cbdb05a9a1426089c57089ef6
+      size: 6262
+    params:
+      params.yaml:
+        base:
+          duration: 3
+          overwrite: true
+          fps: 30
+          batch_size: 4
+          keyboard_detection: true
+        directory:
+          video: 
+            /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/raw/video
+          keyboard_detection: 
+            /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/raw/keyboard_detection
+        extract_proposal:
+          output_dir: 
+            /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/processed
+          overwrite: true
+        generate_proposal:
+          output_dir: 
+            /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/interim
+          output_file: tyrp_only_roi.csv
+          overwrite: true
+    outs:
+    - path: data/processed/proposals_kbdet
+      hash: md5
+      md5: 84ec73242d5fff5c8b9a9584a2baacaf.dir
+      size: 360384630
+      nfiles: 1463
+    - path: data/processed/proposals_list_kbdet.txt
+      hash: md5
+      md5: 6d41c2a973600cfbd766700a6e73e354
+      size: 117837

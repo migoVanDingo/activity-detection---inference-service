@@ -44,6 +44,13 @@ extract_proposal:
  output_dir: /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/processed
  overwrite: True
 
+classify_proposal:
+  output_dir: /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/processed
+  output_dir_classified: /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/processed/proposals_kbdet_classified
+  output_file_detection: tynty-roi-ours-final-output-kbdet.csv
+  output_file_no_detection: tynty-roi-ours-final-output.csv
+  overwrite: True
+
 neural_network:
  input_shape: [3, 90, 224, 224]
  checkpoint: /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/raw/region/best_epoch53.pth

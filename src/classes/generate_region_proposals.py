@@ -10,6 +10,7 @@ from src.utility.coordinates import get_intersection_coordinates
 
 
 class GenerateRegionProposals:
+    
     def __init__(self, config) -> None:
         self.config = config
         self.dur = config['base']['duration']
