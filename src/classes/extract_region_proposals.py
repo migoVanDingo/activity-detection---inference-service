@@ -51,7 +51,7 @@ class ExtractRegionProposals:
 
             # Loading keyboard detection dataframe
             video_name_no_ext = os.path.splitext(video_name)[0]
-            kb_det = pd.read_csv(f"{self.config['directory']['keyboard_detection']}/{video_name_no_ext}_60_det_per_min.csv")
+            kb_det = pd.read_csv(f"{self.config['directory']['keyboard_detection']}/{video_name_no_ext}.csv")
 
             # Typing proposals for current dataframe
             print(f"Extracting typing region proposals from: {video_name}")

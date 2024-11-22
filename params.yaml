@@ -12,24 +12,24 @@ directory:
 
 files:
  videos:
-  - G-C1L1P-Mar02-E-Irma_q2_01-08_30fps.mp4
-  - G-C1L1P-Mar02-E-Irma_q2_02-08_30fps.mp4
-  - G-C1L1P-Mar02-E-Irma_q2_03-08_30fps.mp4
-  - G-C1L1P-Mar02-E-Irma_q2_04-08_30fps.mp4
-  - G-C1L1P-Mar02-E-Irma_q2_05-08_30fps.mp4
-  - G-C1L1P-Mar02-E-Irma_q2_06-08_30fps.mp4
-  - G-C1L1P-Mar02-E-Irma_q2_07-08_30fps.mp4
-  - G-C1L1P-Mar02-E-Irma_q2_08-08_30fps.mp4
+  - GC2L2P-Jun28-B-Phuong_q2_01-08.mp4
+  - GC2L2P-Jun28-B-Phuong_q2_02-08.mp4
+  - GC2L2P-Jun28-B-Phuong_q2_03-08.mp4
+  - GC2L2P-Jun28-B-Phuong_q2_04-08.mp4
+  - GC2L2P-Jun28-B-Phuong_q2_05-08.mp4
+  - GC2L2P-Jun28-B-Phuong_q2_06-08.mp4
+  - GC2L2P-Jun28-B-Phuong_q2_07-08.mp4
+  - GC2L2P-Jun28-B-Phuong_q2_08-08.mp4
     
  keyboard_detections:
-  - G-C1L1P-Mar02-E-Irma_q2_01-08_30fps_60_det_per_min.csv
-  - G-C1L1P-Mar02-E-Irma_q2_02-08_30fps_60_det_per_min.csv
-  - G-C1L1P-Mar02-E-Irma_q2_03-08_30fps_60_det_per_min.csv
-  - G-C1L1P-Mar02-E-Irma_q2_04-08_30fps_60_det_per_min.csv
-  - G-C1L1P-Mar02-E-Irma_q2_05-08_30fps_60_det_per_min.csv
-  - G-C1L1P-Mar02-E-Irma_q2_06-08_30fps_60_det_per_min.csv
-  - G-C1L1P-Mar02-E-Irma_q2_07-08_30fps_60_det_per_min.csv
-  - G-C1L1P-Mar02-E-Irma_q2_08-08_30fps_60_det_per_min.csv
+  - GC2L2P-Jun28-B-Phuong_q2_01-08.csv
+  - GC2L2P-Jun28-B-Phuong_q2_02-08.csv
+  - GC2L2P-Jun28-B-Phuong_q2_03-08.csv
+  - GC2L2P-Jun28-B-Phuong_q2_04-08.csv
+  - GC2L2P-Jun28-B-Phuong_q2_05-08.csv
+  - GC2L2P-Jun28-B-Phuong_q2_06-08.csv
+  - GC2L2P-Jun28-B-Phuong_q2_07-08.csv
+  - GC2L2P-Jun28-B-Phuong_q2_08-08.csv
     
  roi: /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/raw/region/video_roi.csv
 
@@ -37,7 +37,7 @@ files:
 
 generate_proposal:
  output_dir: /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/interim
- output_file: tyrp_only_roi.csv
+ output_file: G-C2L2P-Jun28-B-Phuong_q2_tyrp_only_roi.csv
  overwrite: True
 
 extract_proposal:
@@ -47,8 +47,8 @@ extract_proposal:
 classify_proposal:
   output_dir: /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/processed
   output_dir_classified: /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/processed/proposals_kbdet_classified
-  output_file_detection: tynty-roi-ours-final-output-kbdet.csv
-  output_file_no_detection: tynty-roi-ours-final-output.csv
+  output_file_detection: G-C2L2P-Jun28-B-Phuong_q2_tynty-roi-ours-final-output-kbdet.csv
+  output_file_no_detection: G-C2L2P-Jun28-B-Phuong_q2_tynty-roi-ours-final-output.csv
   overwrite: True
 
 neural_network:

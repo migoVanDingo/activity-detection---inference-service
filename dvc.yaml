@@ -10,12 +10,12 @@ stages:
       - directory
       - files
     outs:
-      - data/interim/tyrp_only_roi.csv
+      - data/interim/G-C2L2P-Jun28-B-Phuong_q2_tyrp_only_roi.csv
 
   extract_proposals:
     cmd: python src/stages/extract_proposals.py
     deps:
-      - data/interim/tyrp_only_roi.csv
+      - data/interim/G-C2L2P-Jun28-B-Phuong_q2_tyrp_only_roi.csv
       - data/raw/keyboard_detection
       - data/raw/video
       - src/classes/extract_region_proposals.py
