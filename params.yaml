@@ -1,3 +1,5 @@
+#Params paths have been adjusted for the remote server in the lab. Add os.cwd() + path for all on this page.
+# Or add absolute path instead
 base:
  duration: 3
  overwrite: True
