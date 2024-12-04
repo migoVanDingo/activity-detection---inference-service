@@ -57,7 +57,7 @@ neural_network:
  input_shape: [3, 90, 224, 224]
  checkpoint: data/raw/region/best_epoch53.pth
  depth: 4
- gpu: False
+ gpu: True
  overwrite: True
 
 
