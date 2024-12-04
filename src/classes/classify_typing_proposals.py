@@ -157,26 +157,22 @@ class ClassifyTypingProposalsFast:
 
 
     def load_net(self):
-        """ Load neural network to GPU. """
+        """ Load neural network to GPU or CPU. """
+        print("INFO: Loading Trained network to GPU/CPU ...")
 
-        print("INFO: Loading Trained network to GPU ...")
+        # Determine the device
+        device = torch.device("cuda:0" if self.config['neural_network']['gpu'] else "cpu")
 
         # Creating an instance of Dyadic 3D-CNN
         net = DyadicCnn3d(self.config['neural_network']['depth'], self.config['neural_network']['input_shape'].copy())
+        net.to(device)  # Move model to the correct device
 
-        if self.config['neural_network']['gpu']:
-            net.to("cuda:0")
+        # Print summary of the network
+        summary(net, tuple(self.config['neural_network']['input_shape']), device="cuda" if self.config['neural_network']['gpu'] else "cpu")
 
-        # Print summary of network.
-        summary(net, tuple(self.config['neural_network']['input_shape'].copy()))
-
-        # Loading the net with trained weights to cuda device 0
-        if self.config['neural_network']['gpu']:
-            ckpt_weights = torch.load(self.config['neural_network']['checkpoint'], map_location=torch.device('cuda:0'))
-        else:
-            ckpt_weights = torch.load(self.config['neural_network']['checkpoint'], map_location=torch.device('cpu'))
-
+        # Load the checkpoint weights
+        ckpt_weights = torch.load(self.config['neural_network']['checkpoint'], map_location=device)
         net.load_state_dict(ckpt_weights['model_state_dict'])
-        net.eval()
+        net.eval()  # Set model to evaluation mode
 
         return net
