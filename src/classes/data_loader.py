@@ -1,5 +1,6 @@
 import os
 import numpy as np
+import torch
 from torch.utils.data import Dataset
 
 
@@ -38,6 +39,7 @@ class AOLMEValTrmsDLoader(Dataset):
         return len(self._trms)
 
     def __getitem__(self, idx):
+
         vpth = self._trms[idx][0]
         vlabel = np.array(int(self._trms[idx][1]))
 
@@ -45,7 +47,9 @@ class AOLMEValTrmsDLoader(Dataset):
         vtensor = self._load_video_cv2(vpth)
 
         # Following book I am returning (label, tensor)
-        return (vlabel, vtensor)
+        data = (vlabel, vtensor)
+        print(f"Sample {idx} data shape: {data.shape if isinstance(data, torch.Tensor) else type(data)}")
+        return data
 
     def _load_trms_lst_file(self, fpth):
         """ 

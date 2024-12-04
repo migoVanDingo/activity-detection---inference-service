@@ -80,7 +80,7 @@ class ClassifyTypingProposalsFast:
                 tst_data,
                 shuffle=False,
                 batch_size=self.config['base']['batch_size'],
-                num_workers=self.config['base']['batch_size']
+                num_workers=self.config['base']['num_workers']
             )
 
             # Resetting maximum memory usage and starting the clock
@@ -91,16 +91,20 @@ class ClassifyTypingProposalsFast:
             # Starting inference
             start_time = time.time()
             for idx, data in enumerate(Bar(tst_loader)):
-                if self.config['neural_network']['gpu']:
-                    dummy_labels, inputs = (
-                        data[0].to("cuda:0", non_blocking=True),
-                        data[1].to("cuda:0", non_blocking=True)
-                    )
-                else: 
-                    dummy_labels, inputs = (
-                        data[0],
-                        data[1]
-                    )
+                try:
+                    if self.config['neural_network']['gpu']:
+                        dummy_labels, inputs = (
+                            data[0].to("cuda:0", non_blocking=True),
+                            data[1].to("cuda:0", non_blocking=True)
+                        )
+                    else: 
+                        dummy_labels, inputs = (
+                            data[0],
+                            data[1]
+                        )
+                except Exception as e:
+                    print(f"Error processing batch {idx} with error: {e}")
+                    raise
 
                 with torch.no_grad():
                     outputs = net(inputs)
