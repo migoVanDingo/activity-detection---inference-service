@@ -41,11 +41,11 @@ files:
 generate_proposal:
  output_dir: data/interim
  output_file: G-C2L2P-Jun28-B-Phuong_q2_tyrp_only_roi.csv
- overwrite: False
+ overwrite: True
 
 extract_proposal:
  output_dir: data/processed
- overwrite: False
+ overwrite: True
 
 classify_proposal:
   output_dir: data/processed
