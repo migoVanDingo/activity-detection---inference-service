@@ -152,6 +152,7 @@ class ClassifyTypingProposalsFast:
 
                 tydf.loc[loc[0], "activity"] = pred_class
                 tydf.loc[loc[0], "class_idx"] = pred_class_idx
+                tydf["class_prob"] = tydf["class_prob"].astype(float)
                 tydf.loc[loc[0], "class_prob"] = float(pred_class_prob)
 
 
