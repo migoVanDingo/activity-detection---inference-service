@@ -6,9 +6,9 @@ base:
  keyboard_detection: True
 
 directory:
- video: /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/raw/video
+ video: data/raw/video
 
- keyboard_detection: /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/raw/keyboard_detection
+ keyboard_detection: data/raw/keyboard_detection
 
 files:
  videos:
@@ -31,29 +31,29 @@ files:
   - GC2L2P-Jun28-B-Phuong_q2_07-08.csv
   - GC2L2P-Jun28-B-Phuong_q2_08-08.csv
     
- roi: /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/raw/region/video_roi.csv
+ roi: data/raw/region/video_roi.csv
 
- session_props: /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/raw/region/properties_session.csv
+ session_props: data/raw/region/properties_session.csv
 
 generate_proposal:
- output_dir: /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/interim
+ output_dir: data/interim
  output_file: G-C2L2P-Jun28-B-Phuong_q2_tyrp_only_roi.csv
  overwrite: True
 
 extract_proposal:
- output_dir: /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/processed
+ output_dir: data/processed
  overwrite: True
 
 classify_proposal:
-  output_dir: /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/processed
-  output_dir_classified: /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/processed/proposals_kbdet_classified
+  output_dir: data/processed
+  output_dir_classified: data/processed/proposals_kbdet_classified
   output_file_detection: G-C2L2P-Jun28-B-Phuong_q2_tynty-roi-ours-final-output-kbdet.csv
   output_file_no_detection: G-C2L2P-Jun28-B-Phuong_q2_tynty-roi-ours-final-output.csv
   overwrite: True
 
 neural_network:
  input_shape: [3, 90, 224, 224]
- checkpoint: /Users/bubz/Developer/master-project/prototype/dvc-test-1/dyadiccnn3d/data/raw/region/best_epoch53.pth
+ checkpoint: data/raw/region/best_epoch53.pth
  depth: 4
  gpu: False
  overwrite: True
