@@ -2,7 +2,7 @@
 # Or add absolute path instead
 base:
  duration: 3
- overwrite: False
+ overwrite: True
  fps: 30
  batch_size: 4
  num_workers: 4
@@ -41,7 +41,7 @@ files:
 generate_proposal:
  output_dir: data/interim
  output_file: G-C2L2P-Jun28-B-Phuong_q2_tyrp_only_roi.csv
- overwrite: False
+ overwrite: True
 
 extract_proposal:
  output_dir: data/processed
