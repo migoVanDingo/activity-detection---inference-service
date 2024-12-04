@@ -125,6 +125,8 @@ class ClassifyTypingProposalsFast:
             print(f"INFO: Total time for batch size of       {self.config['base']['batch_size']} = {round(end_time - start_time)} sec.")
             print(f"INFO: Max memory usage for batch size of {self.config['base']['batch_size']} = {round(max_memory_MB, 2)} MB")
             
+            print(f"Probability List: {pred_prob_lst}")
+
             # Edit information in the data frame
             for i, proposal_name in enumerate(proposal_names):
 
