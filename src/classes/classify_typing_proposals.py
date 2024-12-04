@@ -152,7 +152,7 @@ class ClassifyTypingProposalsFast:
 
                 tydf.loc[loc[0], "activity"] = pred_class
                 tydf.loc[loc[0], "class_idx"] = pred_class_idx
-                tydf.loc[loc[0], "class_prob"] = pred_class_prob
+                tydf.loc[loc[0], "class_prob"] = float(pred_class_prob)
 
 
             # Saving the csv file

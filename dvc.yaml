@@ -44,5 +44,5 @@ stages:
       - generate_proposal
       - extract_proposal
     outs:
-      - data/processed/proposals_list_kbdet_classified.txt
+      - data/processed/G-C2L2P-Jun28-B-Phuong_q2_tynty-roi-ours-final-output-kbdet.csv
     

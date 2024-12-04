@@ -48,7 +48,7 @@ class AOLMEValTrmsDLoader(Dataset):
 
         # Following book I am returning (label, tensor)
         data = (vlabel, vtensor)
-        print(f"Sample {idx} data shape: {data.shape if isinstance(data, torch.Tensor) else type(data)}")
+        #print(f"Sample {idx} data shape: {data.shape if isinstance(data, torch.Tensor) else type(data)}")
         return data
 
     def _load_trms_lst_file(self, fpth):
