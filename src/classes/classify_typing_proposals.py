@@ -137,9 +137,9 @@ class ClassifyTypingProposalsFast:
                     pred_class = "typing"
                 else:
                     pred_class = "notyping"
-                print(f"Proposal: {proposal_name}, Class: {pred_class}, Class Index: {pred_class_idx}, Probability: {pred}")
-                pred_class_prob = pred
-                #pred_class_prob = round(pred, 2)
+
+                pred_class_prob = round(pred, 2)
+                print(f"Proposal: {proposal_name}, Class: {pred_class}, Class Index: {pred_class_idx}, Probability: {pred_class_prob}")
 
                 # This is because for 0.5 I am having problems in ROC curve
                 if pred_class_prob == 0.5:
